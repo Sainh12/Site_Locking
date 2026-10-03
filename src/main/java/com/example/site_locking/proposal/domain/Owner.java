@@ -1,4 +1,4 @@
 package com.example.site_locking.proposal.domain;
 
-public record Owner() {
+public record Owner(OwnerId id, String name) {
 }

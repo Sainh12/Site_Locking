@@ -19,6 +19,6 @@ public class Factory {
     }
 
     public Strategy getStrategy(AccessScope scope){
-        return strategies.get(scope);
+        return strategies.get(scope);//*********REVER POSSIVELMENTE***************
     }
 }

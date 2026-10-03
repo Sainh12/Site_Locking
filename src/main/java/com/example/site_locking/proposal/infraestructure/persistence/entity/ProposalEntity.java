@@ -1,4 +1,54 @@
 package com.example.site_locking.proposal.infraestructure.persistence.entity;
 
+
+import com.example.site_locking.proposal.domain.Owner;
+import com.example.site_locking.proposal.domain.OwnerId;
+import com.example.site_locking.proposal.domain.Proposal;
+import com.example.site_locking.proposal.domain.ProposalId;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Optional;
+import java.util.UUID;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProposalEntity {
+    @Id
+    private UUID id;
+
+    @Column(nullable = false)
+    private String title;
+
+    private String description;
+
+    @Column(nullable = false)
+    private UUID ownerId;
+
+    @Column(nullable = false)
+    private String OwnerName;
+
+    public static ProposalEntity from(Proposal proposal){
+        return new ProposalEntity(
+                proposal.getId().id(),
+                proposal.getTitle(),
+                proposal.getDescription().orElse(null),
+                proposal.getOwner().id().id(),
+                proposal.getOwner().name()
+        );
+    }
+    public Proposal toDomain(){
+        return new Proposal(
+                new ProposalId(this.id),
+                this.title,
+                Optional.ofNullable(this.description),
+                new Owner(new OwnerId(this.ownerId),this.OwnerName)
+        );
+    }
 }

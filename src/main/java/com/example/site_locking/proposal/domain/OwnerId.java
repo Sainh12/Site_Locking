@@ -1,4 +1,6 @@
 package com.example.site_locking.proposal.domain;
 
-public record OwnerId() {
+import java.util.UUID;
+
+public record OwnerId(UUID id) {
 }

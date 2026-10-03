@@ -1,4 +1,9 @@
 package com.example.site_locking.proposal.infraestructure.persistence.http.request;
 
-public record CreateProposalRequest() {
+import com.example.site_locking.proposal.application.input.CreateProposalInput;
+
+import java.util.Optional;
+
+public record CreateProposalRequest(String title, Optional<String> description) {
+    public CreateProposalInput toInput(){return new CreateProposalInput(title,description);}
 }

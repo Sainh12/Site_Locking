@@ -1,0 +1,37 @@
+body{
+    background-color: antiquewhite;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    text-align: center;
+}
+.login {
+    background-color: bisque;
+    font-family: Consolas;
+    font-size: 20px;
+    border-radius: 90px;
+
+    padding: 40px 20px;
+    place-items: center;
+    position:relative;
+    align-items: center;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+}
+
+.titulo-login{
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#button{
+    place-items: center;
+}

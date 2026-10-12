@@ -29,9 +29,22 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .securityContext(context->context.requireExplicitSave(false))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login").permitAll()
-                        .anyRequest().authenticated())
-                .addFilterAt(restUsernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                        //.requestMatchers("/api/auth/login")
+                        //.permitAll()
+                        .requestMatchers(
+                                "/css/**",
+                                "/js/**",
+                                "/image/**")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .addFilterAt(restUsernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        //.loginProcessingUrl("/login")
+                        .permitAll()
+                );
         return http.build();
     }
 

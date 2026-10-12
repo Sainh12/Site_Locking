@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
     <title>Login</title>
 
-    <link rel = "stylesheet" href = "style.css">
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
 </head>
 
 <body>
-    <div class = "login">
-        <h1 class = "titulo-login">Login</h1>
-        <form class = "form-login" name = "l1" action = "Controller" method = "POST">
-            <label for= "name">Username: </label><br>
-            <input type = "text" id = "name" name = "name"><br>
-            <label for = "senha">Password: </label><br>
-            <input type = "password" id="senha" name="senha"><br><br>
-            <button type = "submit" id="button">Enviar</button>
-        </form>
+<!--
+<div th:if ="${param.error}">
+    Invalid Username and password
+</div>
+<div th:if = "${param.logout}">
+    You have been logged out.
+</div>
+-->
+<div class = "login">
+    <h1 class = "titulo-login">Login</h1>
+    <div th:if ="${param.error}">
+        Invalid Username and password
     </div>
+    <div th:if = "${param.logout}">
+        You have been logged out.
+    </div>
+    <form class = "form-login" name = "l1" th:action="@{/login}" method = "POST">
+        <label for= "name">Username: </label><br>
+        <input type = "text" id = "name" name = "username" placeholder="Username"><br>
+        <label for = "senha">Password: </label><br>
+        <input type = "password" id="senha" name="password" placeholder="Password"><br><br>
+        <button type = "submit" id="button" value="Log in">Enviar</button>
+    </form>
+</div>
 
 
 

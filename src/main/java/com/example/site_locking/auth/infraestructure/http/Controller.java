@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class Controller {
 
-    @GetMapping("/Home")
+    @GetMapping("/home")
     public String hello(@AuthenticationPrincipal User user){
         return "telaInicial";
     }

@@ -24,7 +24,7 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain (HttpSecurity http,
-                                             RestUsernamePasswordAuthenticationFilter restUsernamePasswordAuthenticationFilter){
+                                             RestUsernamePasswordAuthenticationFilter restUsernamePasswordAuthenticationFilter)throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .securityContext(context->context.requireExplicitSave(false))

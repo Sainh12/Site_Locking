@@ -1,10 +1,13 @@
 package com.example.site_locking.proposal.application.list;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Component
 public class Factory {
 
     private final Map<AccessScope,Strategy> strategies;

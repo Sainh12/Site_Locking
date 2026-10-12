@@ -36,6 +36,8 @@ public class SecurityConfig {
                                 "/js/**",
                                 "/image/**")
                         .permitAll()
+                        .requestMatchers("/login")
+                        .permitAll()
                         .anyRequest()
                         .authenticated())
                 .addFilterAt(restUsernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
